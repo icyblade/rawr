@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -169,7 +169,7 @@ you are being killed by burst damage, focus on Survival Points.",
             calculatedStats.CritAvoidance = (calculatedStats.Defense - targetDefense) * .04f + stats.Resilience / 39.423f;
             calculatedStats.Mitigation = Math.Min(75f, (stats.Armor / (stats.Armor - 22167.5f + (467.5f * targetLevel))) * 100f);
 
-            float reduction = (1f - (calculatedStats.Mitigation * .01f)) * .96f;
+            float reduction = (1f - (calculatedStats.Mitigation * .01f)) * (1 - 0.02f * talents.ImpRF / 0.5f);
             float attacks = calcOpts.NumberAttackers / calcOpts.AttackSpeed * 10;
             //Apply armor and multipliers for each attack type...
             float miss = Math.Min(0.01f * attacks * calculatedStats.Avoidance, attacks);
@@ -179,7 +179,7 @@ you are being killed by burst damage, focus on Survival Points.",
             float crush = Math.Min((targetLevel == 73 ? .15f : 0f) * attacks, attacks - miss - block - crit);
             float hit = attacks - miss - block - crit - crush;
 
-            float modifier = talents.OneHandSpec * (1 + (.6f * talents.ImpRF));
+            float modifier = talents.OneHandSpec;
             calculatedStats.HolyShieldTPS = modifier * Math.Min(block, 8f) * 1.2f * 1.35f * (155 + .05f * stats.SpellDamageRating) / 10f;
 
             crit *= calcOpts.AverageHit * reduction * 2f;
