@@ -23324,6 +23324,7 @@
     <IconPath>inv_relics_libramofhope</IconPath>
     <Slot>Ranged</Slot>
     <Stats>
+      <ArmorPenetration>1</ArmorPenetration>
     </Stats>
     <Sockets>
       <Stats />
