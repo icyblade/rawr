@@ -217,7 +217,7 @@ you are being killed by burst damage, focus on Survival Points.",
             statsTotal.Agility = (float)Math.Floor(statsTotal.Agility * (1 + statsBuffs.BonusAgilityMultiplier));
             statsTotal.Stamina = (float)Math.Round(statsTotal.Stamina * (1 + statsBuffs.BonusStaminaMultiplier) * talents.SacredDuty * talents.CombatExpertise);
             statsTotal.Health = (float)Math.Round(statsTotal.Health + (statsTotal.Stamina * 10));
-            statsTotal.Armor = (float)Math.Round((statsTotal.Armor + (statsTotal.Agility * 2f)) * (1 + statsBuffs.BonusArmorMultiplier) * talents.Thoughness);
+            statsTotal.Armor = (float)Math.Round(statsTotal.Armor * (1 + statsBuffs.BonusArmorMultiplier) * talents.Thoughness + statsTotal.Agility * 2f);
             return statsTotal;
         }
 
