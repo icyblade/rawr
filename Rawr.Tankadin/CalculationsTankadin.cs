@@ -158,7 +158,7 @@ you are being killed by burst damage, focus on Survival Points.",
             calculatedStats.Avoidance = calculatedStats.Dodge + calculatedStats.Miss + calculatedStats.Parry;
 
             calculatedStats.Block = 5 + (calculatedStats.Defense - targetDefense) * .04f + stats.BlockRating / 7.884614944458f;
-            calculatedStats.BlockValue = (float)Math.Round(stats.BlockValue * talents.ShieldSpecializaiton);
+            calculatedStats.BlockValue = (float)Math.Round(stats.BlockValue * talents.ShieldSpecializaiton) + (float)Math.Floor(stats.Strength / 20f);
             calculatedStats.CrushAvoidance = calculatedStats.Avoidance + calculatedStats.Block + 30;
             calculatedStats.CritAvoidance = (calculatedStats.Defense - targetDefense) * .04f + stats.Resilience / 39.423f;
             calculatedStats.Mitigation = Math.Min(75f, (stats.Armor / (stats.Armor - 22167.5f + (467.5f * targetLevel))) * 100f);
@@ -168,7 +168,7 @@ you are being killed by burst damage, focus on Survival Points.",
             //Apply armor and multipliers for each attack type...
             float miss = Math.Min(0.01f * attacks * calculatedStats.Avoidance, attacks);
 
-            float block = Math.Min(Math.Min(8, attacks * (.3f + character?.Ranged?.Id == 29388 ? 42f / 7.884614944458f : 0 + 0.01f*calculatedStats.Block)), attacks - miss);
+            float block = Math.Min(Math.Min(8, attacks * (.3f + (character?.Ranged?.Id == 29388 ? 0.01f * 42f / 7.884614944458f : 0) + 0.01f*calculatedStats.Block)), attacks - miss);
             if (block > 8) block += Math.Min((attacks - block) * .01f * calculatedStats.Block, attacks - miss - block);
             float crit = Math.Min(0.01f * Math.Max(5 - calculatedStats.CritAvoidance, 0) * attacks, attacks - miss - block);
             float crush = Math.Min((targetLevel == 73 ? .15f : 0f) * attacks, attacks - miss - block - crit);
