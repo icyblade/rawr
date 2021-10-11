@@ -96,7 +96,7 @@ namespace Rawr
 
 				//UpdateBackColors();
 				Invalidate();
-				
+
 				foreach (ItemSelectorItem ctrl in Parent.Controls)
 					if (ctrl != this && !ctrl.IsDisposed)
 						ctrl.HideToolTip();
@@ -227,11 +227,15 @@ namespace Rawr
 					else if (_itemCalculation.Equipped)
 						g.FillRectangle(BrushEquipped, 2, 2, this.Width - 4, this.Height - 4);
 
-					g.DrawImageUnscaled(ItemIcons.GetItemIcon(_itemCalculation.Item, true), 5, 5);
+					var icon = ItemIcons.GetItemIcon(_itemCalculation.Item, true);
+					if (icon != null)
+					{
+						g.DrawImageUnscaled(ItemIcons.GetItemIcon(_itemCalculation.Item, true), 5, 5);
+					}
 					int gemCount = (_itemCalculation.Item.Sockets.Color1 == Item.ItemSlot.None ? 0 : 1) +
 						(_itemCalculation.Item.Sockets.Color2 == Item.ItemSlot.None ? 0 : 1) +
 							(_itemCalculation.Item.Sockets.Color3 == Item.ItemSlot.None ? 0 : 1);
-					g.DrawString(_itemCalculation.Item.Name, this.Font, new SolidBrush(this.ForeColor), 
+					g.DrawString(_itemCalculation.Item.Name, this.Font, new SolidBrush(this.ForeColor),
 						new RectangleF(41, 0, this.Width - 49 - (gemCount * 31), this.Height - 3), StringFormatItemName);
 
 					if (_itemCalculation.Item.Sockets.Color1 != Item.ItemSlot.None)
@@ -252,7 +256,7 @@ namespace Rawr
 								break;
 						}
 						if (_itemCalculation.Item.Gem1 != null)
-							g.DrawImage(ItemIcons.GetItemIcon(_itemCalculation.Item.Gem1, true), 
+							g.DrawImage(ItemIcons.GetItemIcon(_itemCalculation.Item.Gem1, true),
 								new Rectangle(this.Width - 2 - (gemCount * 31), 9, 24, 24));
 						gemCount--;
 					}
@@ -356,8 +360,8 @@ namespace Rawr
 					_itemCalculation = value;
 					_sort = (ComparisonGraph.ComparisonSort)(-1);
 					Invalidate();
-					
-					
+
+
 					//UpdateBackColors();
 					//Item item = _itemCalculation.Item;
 					//pictureBoxIcon.Image = ItemIcons.GetItemIcon(item.IconPath);
@@ -477,7 +481,7 @@ namespace Rawr
 		//            catch { }
 		//}
 
-        /// <summary> 
+        /// <summary>
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
