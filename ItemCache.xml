@@ -23324,7 +23324,6 @@
     <IconPath>inv_relics_libramofhope</IconPath>
     <Slot>Ranged</Slot>
     <Stats>
-      <BlockRating>42</BlockRating>
     </Stats>
     <Sockets>
       <Stats />

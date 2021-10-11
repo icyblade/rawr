@@ -173,7 +173,8 @@ you are being killed by burst damage, focus on Survival Points.",
             float attacks = calcOpts.NumberAttackers / calcOpts.AttackSpeed * 10;
             //Apply armor and multipliers for each attack type...
             float miss = Math.Min(0.01f * attacks * calculatedStats.Avoidance, attacks);
-            float block = Math.Min(Math.Min(8, attacks * (.3f + 0.01f*calculatedStats.Block)), attacks - miss);
+            
+            float block = Math.Min(Math.Min(8, attacks * (.3f + character?.Ranged?.Id == 29388 ? 42f / 7.884614944458f : 0 + 0.01f*calculatedStats.Block)), attacks - miss);
             if (block > 8) block += Math.Min((attacks - block) * .01f * calculatedStats.Block, attacks - miss - block);
             float crit = Math.Min(0.01f * Math.Max(5 - calculatedStats.CritAvoidance, 0) * attacks, attacks - miss - block);
             float crush = Math.Min((targetLevel == 73 ? .15f : 0f) * attacks, attacks - miss - block - crit);
