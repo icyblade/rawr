@@ -207,7 +207,7 @@ you are being killed by burst damage, focus on Survival Points.",
 
         public override Stats GetCharacterStats(Character character, Item additionalItem)
         {
-            Stats statsRace = new Stats() { Health = 3197, Mana = 2673, Stamina = 118, Intellect = 86, Spirit = 88, Agility = 79, DodgeRating = 12.3f };
+            Stats statsRace = new Stats() { Health = 3197, Mana = 2673, Stamina = 120, Intellect = 83, Spirit = 89, Agility = 77, DodgeRating = 12.3f, BlockValue = 4 };
             Stats statsBaseGear = GetItemStats(character, additionalItem);
             Stats statsEnchants = GetEnchantsStats(character);
             Stats statsBuffs = GetBuffsStats(character.ActiveBuffs);
