@@ -169,17 +169,17 @@ namespace Rawr.Tankadin
             dictValues.Add("Mitigation", Mitigation.ToString());
             dictValues.Add("Spell Damage", _basicStats.SpellDamageRating.ToString());
             dictValues.Add("Total Mitigation", TotalMitigation.ToString() + "%");
-            if (CritAvoidance == (5f + levelDifference))
-                dictValues.Add("Chance to be Crit", ((5f + levelDifference) - CritAvoidance).ToString()
+            if (CritAvoidance == 5f)
+                dictValues.Add("Chance to be Crit", (5f - CritAvoidance).ToString()
                     + "%*Exactly enough defense rating/resilience to be uncrittable by bosses.");
-            else if (CritAvoidance < (5f + levelDifference))
-                dictValues.Add("Chance to be Crit", ((5f + levelDifference) - CritAvoidance).ToString()
+            else if (CritAvoidance < 5f)
+                dictValues.Add("Chance to be Crit", (5f - CritAvoidance).ToString()
                     + string.Format("%*CRITTABLE! Short by {0} defense rating or {1} resilience to be uncrittable by bosses.",
-                    Math.Ceiling(((5f + levelDifference) - CritAvoidance) * 60f), Math.Ceiling(((5f + levelDifference) - CritAvoidance) * 39.423f)));
+                    Math.Ceiling((5f - CritAvoidance) * 60f), Math.Ceiling((5f - CritAvoidance) * 39.423f)));
             else
-                dictValues.Add("Chance to be Crit", ((5f + levelDifference) - CritAvoidance).ToString()
+                dictValues.Add("Chance to be Crit", (5f - CritAvoidance).ToString()
                     + string.Format("%*Uncrittable by bosses. {0} defense rating or {1} resilience over the crit cap.",
-                    Math.Floor(((5f + levelDifference) - CritAvoidance) * -60f), Math.Floor(((5f + levelDifference) - CritAvoidance) * -39.423f)));
+                    Math.Floor((5f - CritAvoidance) * -60f), Math.Floor((5f - CritAvoidance) * -39.423f)));
             dictValues.Add("Overall Points", OverallPoints.ToString());
             dictValues.Add("Mitigation Points", MitigationPoints.ToString());
             dictValues.Add("Survival Points", SurvivalPoints.ToString());
