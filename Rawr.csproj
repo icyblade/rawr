@@ -375,6 +375,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ItemCache.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ItemSource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="RawrIcon.ico" />
     <Content Include="ReadMe.txt" />
     <Content Include="Resources\Diamond2.png" />
