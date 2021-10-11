@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -175,7 +175,8 @@ you are being killed by burst damage, focus on Survival Points.",
             float hit = attacks - miss - block - crit - crush;
 
             float modifier = talents.OneHandSpec;
-            calculatedStats.HolyShieldTPS = modifier * Math.Min(block, 8f) * 1.2f * 1.35f * (155 + .05f * stats.SpellDamageRating) / 10f;
+            var spellDamage = stats.SpellDamageRating + stats.SpellHolyDamageRating;
+            calculatedStats.HolyShieldTPS = modifier * Math.Min(block, 8f) * 1.2f * 1.35f * (155 + .05f * spellDamage) / 10f;
 
             crit *= calcOpts.AverageHit * reduction * 2f;
             crush *= calcOpts.AverageHit * reduction * 1.5f;
@@ -188,9 +189,9 @@ you are being killed by burst damage, focus on Survival Points.",
             calculatedStats.MitigationPoints = stats.Health / calculatedStats.DamageTaken * 100;
             float ws = character.MainHand == null ? 0 : character.MainHand.Speed;
             float wd = character.MainHand == null ? 0 : ((character.MainHand.MinDamage + character.MainHand.MaxDamage) / 2f);
-            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd - 1f + (0.108f * ws * stats.SpellDamageRating * ws)) / ws) * modifier;
-            calculatedStats.ConsecrateTPS = calcOpts.NumberAttackers * (512 + .9524f * stats.SpellDamageRating) / 8f * modifier;
-            calculatedStats.JoRTPS = (218f + stats.SpellDamageRating * .7143f) / 9f * modifier;
+            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd - 1f + (0.108f * ws * spellDamage * ws)) / ws) * modifier;
+            calculatedStats.ConsecrateTPS = calcOpts.NumberAttackers * (512 + .9524f * spellDamage) / 8f * modifier;
+            calculatedStats.JoRTPS = (218f + spellDamage * .7143f) / 9f * modifier;
             calculatedStats.OverallTPS = calculatedStats.SoRTPS + calculatedStats.JoRTPS +
                 calculatedStats.HolyShieldTPS + calculatedStats.ConsecrateTPS + calculatedStats.MiscTPS;
             calculatedStats.ThreatPoints = calculatedStats.OverallTPS * calcOpts.ThreatScale;
@@ -240,6 +241,7 @@ you are being killed by burst damage, focus on Survival Points.",
                 Health = stats.Health,
                 Miss = stats.Miss,
                 SpellDamageRating = stats.SpellDamageRating,
+                SpellHolyDamageRating = stats.SpellHolyDamageRating,
                 HitRating = stats.HitRating,
                 SpellHitRating = stats.SpellHitRating,
                 ArmorPenetration = stats.ArmorPenetration,
@@ -251,7 +253,7 @@ you are being killed by burst damage, focus on Survival Points.",
             return (stats.Agility + stats.Armor + stats.BonusAgilityMultiplier + stats.BonusArmorMultiplier +
                 stats.BonusStaminaMultiplier + stats.DefenseRating + stats.DodgeRating + stats.Health +
                 stats.Miss + stats.Resilience + stats.Stamina + stats.ParryRating + stats.BlockRating + stats.BlockValue +
-                stats.SpellHitRating + stats.SpellDamageRating + stats.HitRating + stats.ArmorPenetration) > 0;
+                stats.SpellHitRating + stats.SpellDamageRating + stats.SpellHolyDamageRating + stats.HitRating + stats.ArmorPenetration) > 0;
         }
     }
 

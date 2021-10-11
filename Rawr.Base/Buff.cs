@@ -690,7 +690,7 @@ namespace Rawr
             {
                 Name = "Flask of Blinding Light",
                 Category = BuffCategory.ElixirsAndFlasks,
-                Stats = new Stats() { SpellArcaneDamageRating = 80, SpellNatureDamageRating = 80 /*, SpellHolyDamageRating = 80 */ },
+                Stats = new Stats() { SpellArcaneDamageRating = 80, SpellNatureDamageRating = 80, SpellHolyDamageRating = 80 },
                 ConflictingBuffs = new string[] { "Battle Elixir", "Guardian Elixir" }
             });
             defaultBuffs.Add(new Buff()

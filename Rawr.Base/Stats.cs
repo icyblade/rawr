@@ -136,6 +136,7 @@ namespace Rawr
         SpellHasteFor6SecOnCast_15_45,
         SpellHasteFor6SecOnHit_10_45,
         SpellHasteRating,
+        SpellHolyDamageRating,
         SpellHitRating,
         SpellNatureDamageRating,
         SpellPenetration,
@@ -502,6 +503,15 @@ namespace Rawr
         {
             get { return _rawAdditiveData[(int)AdditiveStat.SpellNatureDamageRating]; }
             set { _rawAdditiveData[(int)AdditiveStat.SpellNatureDamageRating] = value; }
+        }
+
+        [System.ComponentModel.DefaultValueAttribute(0f)]
+        [Category("Spell Combat Ratings")]
+        [DisplayName("Spell Holy Damage")]
+        public float SpellHolyDamageRating
+        {
+            get { return _rawAdditiveData[(int)AdditiveStat.SpellHolyDamageRating]; }
+            set { _rawAdditiveData[(int)AdditiveStat.SpellHolyDamageRating] = value; }
         }
 
         [System.ComponentModel.DefaultValueAttribute(0f)]
