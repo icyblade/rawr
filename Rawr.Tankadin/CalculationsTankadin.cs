@@ -48,15 +48,8 @@ namespace Rawr.Tankadin
 Overall is typically, but not always, the best way to rate gear.
 For specific encounters, closer attention to Mitigation and
 Survival Points individually may be important.",
-					@"Complex Stats:Mitigation Points*Effective health",
-					@"Complex Stats:Survival Points*Survival Points represents the total raw physical damage
-(pre-mitigation) you can take before dying. Unlike
-Mitigation Points, you should not attempt to maximize this,
-but rather get 'enough' of it, and then focus on Mitigation.
-'Enough' can vary greatly by fight and by your healers, but
-keeping it roughly even with Mitigation Points is a good
-way to maintain 'enough' as you progress. If you find that
-you are being killed by burst damage, focus on Survival Points.",
+					@"Complex Stats:Mitigation Points*Effective health with correct avoidances",
+					@"Complex Stats:Survival Points*Effective health without avoidances, crits, crushes",
                      "Threat:Overall",
                      "Threat:Holy Shield",
                      "Threat:Seal of Right",
