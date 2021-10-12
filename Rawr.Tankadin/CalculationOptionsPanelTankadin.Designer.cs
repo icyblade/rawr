@@ -47,9 +47,9 @@
             this.radioSingle = new System.Windows.Forms.RadioButton();
             this.trackBarTargetArmor = new System.Windows.Forms.TrackBar();
             this.label8 = new System.Windows.Forms.Label();
-            this.trackBarMitigationScale = new System.Windows.Forms.TrackBar();
+            this.trackBarSurvivalScale = new System.Windows.Forms.TrackBar();
             this.label7 = new System.Windows.Forms.Label();
-            this.labelMitigationScale = new System.Windows.Forms.Label();
+            this.labelSurvivalScale = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nubAtkSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nubAttackers)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -57,7 +57,7 @@
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarThreatScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTargetArmor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMitigationScale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSurvivalScale)).BeginInit();
             this.SuspendLayout();
             // 
             // cmbTargetLevel
@@ -321,22 +321,22 @@
             this.label8.Text = "Target Armor: ";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // trackBarMitigationScale
+            // trackBarSurvivalScale
             // 
-            this.trackBarMitigationScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.trackBarSurvivalScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.trackBarMitigationScale.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.trackBarMitigationScale.LargeChange = 1000;
-            this.trackBarMitigationScale.Location = new System.Drawing.Point(68, 311);
-            this.trackBarMitigationScale.Maximum = 15000;
-            this.trackBarMitigationScale.Minimum = 1000;
-            this.trackBarMitigationScale.Name = "trackBarMitigationScale";
-            this.trackBarMitigationScale.Size = new System.Drawing.Size(131, 45);
-            this.trackBarMitigationScale.SmallChange = 50;
-            this.trackBarMitigationScale.TabIndex = 17;
-            this.trackBarMitigationScale.TickFrequency = 500;
-            this.trackBarMitigationScale.Value = 4000;
-            this.trackBarMitigationScale.Scroll += new System.EventHandler(this.trackBarMitigationScale_Scroll);
+            this.trackBarSurvivalScale.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.trackBarSurvivalScale.LargeChange = 5;
+            this.trackBarSurvivalScale.Location = new System.Drawing.Point(68, 311);
+            this.trackBarSurvivalScale.Maximum = 10;
+            this.trackBarSurvivalScale.Minimum = 1;
+            this.trackBarSurvivalScale.Name = "trackBarSurvivalScale";
+            this.trackBarSurvivalScale.Size = new System.Drawing.Size(131, 45);
+            this.trackBarSurvivalScale.SmallChange = 1;
+            this.trackBarSurvivalScale.TabIndex = 17;
+            this.trackBarSurvivalScale.TickFrequency = 1;
+            this.trackBarSurvivalScale.Value = 1;
+            this.trackBarSurvivalScale.Scroll += new System.EventHandler(this.trackBarSurvivalScale_Scroll);
             // 
             // label7
             // 
@@ -344,26 +344,26 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 45);
             this.label7.TabIndex = 13;
-            this.label7.Text = "Mitigation Scale:";
+            this.label7.Text = "Survival Scale:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelMitigationScale
+            // labelSurvivalScale
             // 
-            this.labelMitigationScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.labelSurvivalScale.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.labelMitigationScale.AutoSize = true;
-            this.labelMitigationScale.Location = new System.Drawing.Point(73, 343);
-            this.labelMitigationScale.Name = "labelMitigationScale";
-            this.labelMitigationScale.Size = new System.Drawing.Size(31, 13);
-            this.labelMitigationScale.TabIndex = 21;
-            this.labelMitigationScale.Text = "4000";
+            this.labelSurvivalScale.AutoSize = true;
+            this.labelSurvivalScale.Location = new System.Drawing.Point(73, 343);
+            this.labelSurvivalScale.Name = "labelSurvivalScale";
+            this.labelSurvivalScale.Size = new System.Drawing.Size(31, 13);
+            this.labelSurvivalScale.TabIndex = 21;
+            this.labelSurvivalScale.Text = "1";
             // 
             // CalculationOptionsPanelTankadin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.labelMitigationScale);
-            this.Controls.Add(this.trackBarMitigationScale);
+            this.Controls.Add(this.labelSurvivalScale);
+            this.Controls.Add(this.trackBarSurvivalScale);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -380,7 +380,7 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarThreatScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarTargetArmor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBarMitigationScale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarSurvivalScale)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -400,7 +400,7 @@
         private System.Windows.Forms.RadioButton radioSingle;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TrackBar trackBarThreatScale;
-        private System.Windows.Forms.TrackBar trackBarMitigationScale;
+        private System.Windows.Forms.TrackBar trackBarSurvivalScale;
         private System.Windows.Forms.TrackBar trackBarBossAttackValue;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TrackBar trackBarTargetArmor;
@@ -408,7 +408,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label labelThreatScale;
         private System.Windows.Forms.Label labelTargetArmor;
-        private System.Windows.Forms.Label labelMitigationScale;
+        private System.Windows.Forms.Label labelSurvivalScale;
         private System.Windows.Forms.Label labelBossAttackValue;
     }
 }

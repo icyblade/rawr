@@ -178,7 +178,7 @@ Survival Points individually may be important.",
             calculatedStats.DamageTaken = (hit + crush + crit + block) / (attacks * calcOpts.AverageHit) * 100;
             calculatedStats.TotalMitigation = 100f - calculatedStats.DamageTaken;
 
-            calculatedStats.SurvivalPoints = stats.Health / reduction;
+            calculatedStats.SurvivalPoints = stats.Health / reduction * calcOpts.SurvivalScale;
             calculatedStats.MitigationPoints = stats.Health / calculatedStats.DamageTaken * 100;
             float ws = character.MainHand == null ? 0 : character.MainHand.Speed;
             float wd = character.MainHand == null ? 0 : ((character.MainHand.MinDamage + character.MainHand.MaxDamage) / 2f);

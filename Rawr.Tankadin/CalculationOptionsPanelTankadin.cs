@@ -29,11 +29,11 @@ namespace Rawr.Tankadin
             nubAtkSpeed.Value = (decimal)calcOpts.AttackSpeed;
             nubAttackers.Value = (decimal)calcOpts.NumberAttackers;
             trackBarBossAttackValue.Value = calcOpts.AverageHit;
-            trackBarMitigationScale.Value = calcOpts.MitigationScale;
+            trackBarSurvivalScale.Value = calcOpts.SurvivalScale;
             trackBarTargetArmor.Value = calcOpts.TargetArmor;
             trackBarThreatScale.Value = calcOpts.ThreatScale;
             labelBossAttackValue.Text = calcOpts.AverageHit.ToString();
-            labelMitigationScale.Text = calcOpts.MitigationScale.ToString();
+            labelSurvivalScale.Text = calcOpts.SurvivalScale.ToString();
             labelTargetArmor.Text = calcOpts.TargetArmor.ToString();
             labelThreatScale.Text = calcOpts.ThreatScale.ToString();
             _loadingCalculationOptions = false;
@@ -92,13 +92,13 @@ namespace Rawr.Tankadin
             }
         }
 
-        private void trackBarMitigationScale_Scroll(object sender, EventArgs e)
+        private void trackBarSurvivalScale_Scroll(object sender, EventArgs e)
         {
             if (!_loadingCalculationOptions)
             {
                 CalculationOptionsTankadin calcOpts = Character.CalculationOptions as CalculationOptionsTankadin;
-                calcOpts.MitigationScale = trackBarMitigationScale.Value;
-                labelMitigationScale.Text = trackBarMitigationScale.Value.ToString();
+                calcOpts.SurvivalScale = trackBarSurvivalScale.Value;
+                labelSurvivalScale.Text = trackBarSurvivalScale.Value.ToString();
                 Character.OnItemsChanged();
             }
         }
@@ -131,12 +131,12 @@ namespace Rawr.Tankadin
 
         public bool EnforceMetagemRequirements = false;
         public int TargetLevel = 73;
-        public int AverageHit = 20000;
+        public int AverageHit = 15000;
         public float AttackSpeed = 2;
         public int NumberAttackers = 1;
         public int TargetArmor = 6600;
         public int ThreatScale = 100;
-        public int MitigationScale = 4000;
+        public int SurvivalScale = 1;
     }
 
 }
