@@ -197,7 +197,7 @@ Survival Points individually may be important.",
             calculatedStats.MitigationPoints = stats.Health / calculatedStats.DamageTaken * 100;
             float ws = character.MainHand == null ? 0 : character.MainHand.Speed;
             float wd = character.MainHand == null ? 0 : ((character.MainHand.MinDamage + character.MainHand.MaxDamage) / 2f);
-            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd + 6f + (0.102f * ws * spellDamage * ws)) / ws) * threatModifier;
+            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd + 6f + (0.102f * ws * spellDamage)) / ws * threatModifier);
             calculatedStats.ConsecrateTPS = calcOpts.NumberAttackers * (512 + .9524f * spellDamage) / 8f * threatModifier;
             calculatedStats.JoRTPS = (235.5f + spellDamage * .7143f) / (10 - 2 * talents.ImprovedJudgement) * threatModifier;
             calculatedStats.OverallTPS = calculatedStats.SoRTPS + calculatedStats.JoRTPS +
