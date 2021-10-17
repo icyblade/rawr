@@ -44,7 +44,8 @@ namespace Rawr.Tankadin
 					"Complex Stats:Mitigation",
 					"Complex Stats:Total Mitigation",
 					"Complex Stats:Chance to be Crit",
-					@"Complex Stats:Overall Points*Overall Points are a sum of Mitigation and Survival Points.
+                    "Complex Stats:Chance to be Crush",
+                    @"Complex Stats:Overall Points*Overall Points are a sum of Mitigation and Survival Points.
 Overall is typically, but not always, the best way to rate gear.
 For specific encounters, closer attention to Mitigation and
 Survival Points individually may be important.",
@@ -152,7 +153,7 @@ Survival Points individually may be important.",
 
             calculatedStats.Block = 5 + (calculatedStats.Defense - targetDefense) * .04f + stats.BlockRating / 7.884614944458f;
             calculatedStats.BlockValue = (float)Math.Round(stats.BlockValue * (1 + 0.1f * talents.ShieldSpecialization)) + (float)Math.Floor(stats.Strength / 20f);
-            calculatedStats.CrushAvoidance = calculatedStats.Avoidance + calculatedStats.Block + 30;
+            calculatedStats.CrushAvoidance = calculatedStats.Avoidance + calculatedStats.Block + 30 + (character?.Ranged?.Id == 29388 ? 42f / 7.884614944458f : 0);
             calculatedStats.CritAvoidance = (calculatedStats.Defense - targetDefense) * .04f + stats.Resilience / 39.423f;
             calculatedStats.Mitigation = Math.Min(75f, (stats.Armor / (stats.Armor - 22167.5f + (467.5f * targetLevel))) * 100f);
 
