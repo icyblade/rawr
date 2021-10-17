@@ -144,19 +144,19 @@ Survival Points individually may be important.",
 
 
             //Avoidance calculations
-            calculatedStats.Defense = 350 + (float)Math.Floor(stats.DefenseRating / (123f / 52f)) + talents.Anticipation;
+            calculatedStats.Defense = 350 + (float)Math.Floor(stats.DefenseRating / (123f / 52f)) + talents.Anticipation * 4;
             calculatedStats.Miss = 5 + (calculatedStats.Defense - targetDefense) * .04f + stats.Miss;
             calculatedStats.Parry = 5 + (calculatedStats.Defense - targetDefense) * .04f + stats.ParryRating / 23.6538461538462f + talents.Deflection;
             calculatedStats.Dodge = (calculatedStats.Defense - targetDefense) * .04f + stats.Agility / 25f + (stats.DodgeRating / (984f / 52f));
             calculatedStats.Avoidance = calculatedStats.Dodge + calculatedStats.Miss + calculatedStats.Parry;
 
             calculatedStats.Block = 5 + (calculatedStats.Defense - targetDefense) * .04f + stats.BlockRating / 7.884614944458f;
-            calculatedStats.BlockValue = (float)Math.Round(stats.BlockValue * talents.ShieldSpecializaiton) + (float)Math.Floor(stats.Strength / 20f);
+            calculatedStats.BlockValue = (float)Math.Round(stats.BlockValue * (1 + 0.1f * talents.ShieldSpecialization)) + (float)Math.Floor(stats.Strength / 20f);
             calculatedStats.CrushAvoidance = calculatedStats.Avoidance + calculatedStats.Block + 30;
             calculatedStats.CritAvoidance = (calculatedStats.Defense - targetDefense) * .04f + stats.Resilience / 39.423f;
             calculatedStats.Mitigation = Math.Min(75f, (stats.Armor / (stats.Armor - 22167.5f + (467.5f * targetLevel))) * 100f);
 
-            float reduction = (1f - (calculatedStats.Mitigation * .01f)) * (1 - 0.02f * talents.ImpRF / 0.5f);
+            float reduction = (1f - (calculatedStats.Mitigation * .01f)) * (1 - 0.02f * talents.ImprovedRighteousFury);
             float attacks = calcOpts.NumberAttackers / calcOpts.AttackSpeed * 10;
             //Apply armor and multipliers for each attack type...
             float miss = Math.Min(0.01f * attacks * calculatedStats.Avoidance, attacks);
@@ -167,9 +167,24 @@ Survival Points individually may be important.",
             float crush = Math.Min((targetLevel == 73 ? .15f : 0f) * attacks, attacks - miss - block - crit);
             float hit = attacks - miss - block - crit - crush;
 
-            float modifier = talents.OneHandSpec;
+            float threatModifier = 1 + 0.01f * talents.OneHandSpec;
+            switch (talents.ImprovedRighteousFury)
+            {
+                case 1:
+                    threatModifier *= 1 + 0.06f * 1.16f;
+                    break;
+                case 2:
+                    threatModifier *= 1 + 0.06f * 1.33f;
+                    break;
+                case 3:
+                    threatModifier *= 1 + 0.06f * 1.5f;
+                    break;
+                default:
+                    threatModifier *= 1 + 0.06f;
+                    break;
+            }
             var spellDamage = stats.SpellDamageRating + stats.SpellHolyDamageRating;
-            calculatedStats.HolyShieldTPS = modifier * Math.Min(block, 8f) * 1.2f * 1.35f * (155 + .05f * spellDamage) / 10f;
+            calculatedStats.HolyShieldTPS = threatModifier * Math.Min(block, 8f) * 1.2f * 1.35f * (155 + .05f * spellDamage) / 10f;
 
             crit *= calcOpts.AverageHit * reduction * 2f;
             crush *= calcOpts.AverageHit * reduction * 1.5f;
@@ -182,9 +197,9 @@ Survival Points individually may be important.",
             calculatedStats.MitigationPoints = stats.Health / calculatedStats.DamageTaken * 100;
             float ws = character.MainHand == null ? 0 : character.MainHand.Speed;
             float wd = character.MainHand == null ? 0 : ((character.MainHand.MinDamage + character.MainHand.MaxDamage) / 2f);
-            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd - 1f + (0.108f * ws * spellDamage * ws)) / ws) * modifier;
-            calculatedStats.ConsecrateTPS = calcOpts.NumberAttackers * (512 + .9524f * spellDamage) / 8f * modifier;
-            calculatedStats.JoRTPS = (218f + spellDamage * .7143f) / 9f * modifier;
+            calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd + 6f + (0.102f * ws * spellDamage * ws)) / ws) * threatModifier;
+            calculatedStats.ConsecrateTPS = calcOpts.NumberAttackers * (512 + .9524f * spellDamage) / 8f * threatModifier;
+            calculatedStats.JoRTPS = (235.5f + spellDamage * .7143f) / (10 - 2 * talents.ImprovedJudgement) * threatModifier;
             calculatedStats.OverallTPS = calculatedStats.SoRTPS + calculatedStats.JoRTPS +
                 calculatedStats.HolyShieldTPS + calculatedStats.ConsecrateTPS + calculatedStats.MiscTPS;
             calculatedStats.ThreatPoints = calculatedStats.OverallTPS * calcOpts.ThreatScale;
@@ -204,9 +219,9 @@ Survival Points individually may be important.",
 
             Stats statsTotal = statsBaseGear + statsEnchants + statsBuffs + statsRace;
             statsTotal.Agility = (float)Math.Floor(statsTotal.Agility * (1 + statsBuffs.BonusAgilityMultiplier));
-            statsTotal.Stamina = (float)Math.Floor(statsTotal.Stamina * (1 + statsBuffs.BonusStaminaMultiplier) * talents.SacredDuty * talents.CombatExpertise);
+            statsTotal.Stamina = (float)Math.Floor(statsTotal.Stamina * (1 + statsBuffs.BonusStaminaMultiplier) * (1 + 0.03f * talents.SacredDuty) * (1 + 0.02f * talents.CombatExpertise));
             statsTotal.Health = (float)Math.Round(statsTotal.Health + (statsTotal.Stamina * 10));
-            statsTotal.Armor = (float)Math.Round(statsTotal.Armor * (1 + statsBuffs.BonusArmorMultiplier) * talents.Thoughness + statsTotal.Agility * 2f);
+            statsTotal.Armor = (float)Math.Round(statsTotal.Armor * (1 + statsBuffs.BonusArmorMultiplier) * (1 + talents.Thoughness * 0.02f) + statsTotal.Agility * 2f);
             return statsTotal;
         }
 
