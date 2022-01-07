@@ -549,11 +549,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DefaultDataFiles\BuffSets.xml" />
-    <Content Include="DefaultDataFiles\ItemCache.xml" />
-    <Content Include="DefaultDataFiles\ItemFilter.xml" />
-    <Content Include="DefaultDataFiles\ItemSource.xml" />
-    <Content Include="DefaultDataFiles\Talents.xml" />
     <Content Include="RawrIcon.ico" />
     <None Include="BatchTools.datasource" />
     <None Include="ItemFilterRegex.datasource" />
@@ -651,11 +646,17 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <DefaultDataFiles Include="$(ProjectDir)\DefaultDataFiles\**" />
+  </ItemGroup>
+  <Target Name="CopyDefaultDataFiles" BeforeTargets="PrepareForBuild">
+    <Copy SourceFiles="@(DefaultDataFiles)" DestinationFiles="@(DefaultDataFiles->'$(OutDir)\Data\%(RecursiveDir)%(Filename)%(Extension)')" />
+  </Target>
 </Project>
