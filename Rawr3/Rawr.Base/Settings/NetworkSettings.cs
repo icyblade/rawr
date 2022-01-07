@@ -23,11 +23,11 @@ namespace Rawr.Properties
             _default = new NetworkSettings();
 
             _default.ProxyServer = "";
-            _default.ProxyPort = 0;    
+            _default.ProxyPort = 0;
             _default.UseDefaultProxySettings = true;
             _default.ProxyUserName = "";
             _default.ProxyPassword = "";
-            _default.WoWItemIconURI = "http://www.wowarmory.com/wow-icons/_images/64x64/";
+            _default.WoWItemIconURI = "https://wotlkdb.com/static/images/wow/icons/large/";
             _default.MaxHttpRequests = 5;
             _default.ProxyType = "None";
             _default.UserAgent_IE7 = "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; bgft) ";
@@ -82,7 +82,7 @@ namespace Rawr.Properties
                 else return characterTalentURI;
             }
             set { characterTalentURI = value; }
-        }  
+        }
 
         private string characterSheetURI;
         public string CharacterSheetURI
@@ -104,7 +104,7 @@ namespace Rawr.Properties
                 else return itemToolTipSheetURI;
             }
             set { itemToolTipSheetURI = value; }
-        }   
+        }
 
         public string ItemUpgradeURI { get; set; }
         public string TalentIconURI { get; set; }
@@ -118,10 +118,10 @@ namespace Rawr.Properties
                 else return itemInfoURI;
             }
             set { itemInfoURI = value; }
-        }  
+        }
 
-        public bool DownloadItemInfo { get; set; } 
-        public bool ProxyRequiresAuthentication { get; set; } 
+        public bool DownloadItemInfo { get; set; }
+        public bool ProxyRequiresAuthentication { get; set; }
         public bool UseDefaultAuthenticationForProxy { get; set; }
         public string ProxyDomain { get; set; }
         public string ItemWowheadURI { get; set; }

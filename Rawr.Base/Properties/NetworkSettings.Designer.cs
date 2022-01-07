@@ -9,20 +9,20 @@
 //------------------------------------------------------------------------------
 
 namespace Rawr.Properties {
-    
-    
+
+
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "10.0.0.0")]
     public sealed partial class NetworkSettings : global::System.Configuration.ApplicationSettingsBase {
-        
+
         private static NetworkSettings defaultInstance = ((NetworkSettings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new NetworkSettings())));
-        
+
         public static NetworkSettings Default {
             get {
                 return defaultInstance;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -34,7 +34,7 @@ namespace Rawr.Properties {
                 this["ProxyServer"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
@@ -46,7 +46,7 @@ namespace Rawr.Properties {
                 this["ProxyPort"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
@@ -58,7 +58,7 @@ namespace Rawr.Properties {
                 this["UseDefaultProxySettings"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -70,7 +70,7 @@ namespace Rawr.Properties {
                 this["ProxyUserName"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -82,16 +82,16 @@ namespace Rawr.Properties {
                 this["ProxyPassword"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.wowarmory.com/wow-icons/_images/64x64/")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://wotlkdb.com/static/images/wow/icons/large/")]
         public string WoWItemIconURI {
             get {
                 return ((string)(this["WoWItemIconURI"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("5")]
@@ -103,7 +103,7 @@ namespace Rawr.Properties {
                 this["MaxHttpRequests"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("None")]
@@ -115,7 +115,7 @@ namespace Rawr.Properties {
                 this["ProxyType"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; bgft) ")]
@@ -124,7 +124,7 @@ namespace Rawr.Properties {
                 return ((string)(this["UserAgent_IE7"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1) ")]
@@ -133,7 +133,7 @@ namespace Rawr.Properties {
                 return ((string)(this["UserAgent_IE6"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.8.1.4) Gecko/20070515 Firefo" +
@@ -143,7 +143,7 @@ namespace Rawr.Properties {
                 return ((string)(this["UserAgent_FireFox2"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Mozilla/5.0 (Windows; U; Windows NT 6.0; en-US; rv:1.8.1.4) Gecko/20070515 Firefo" +
@@ -156,7 +156,7 @@ namespace Rawr.Properties {
                 this["UserAgent"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.worldofwarcraft.com/shared/global/talents/{0}/data.js")]
@@ -165,7 +165,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ClassTalentURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowarmory.com/character-talents.xml?r={1}&cn={2}")]
@@ -174,7 +174,7 @@ namespace Rawr.Properties {
                 return ((string)(this["CharacterTalentURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowarmory.com/character-sheet.xml?r={1}&cn={2}")]
@@ -183,7 +183,7 @@ namespace Rawr.Properties {
                 return ((string)(this["CharacterSheetURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.wowarmory.com/item-tooltip.xml?i={0}")]
@@ -192,7 +192,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemToolTipSheetURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowarmory.com/search.xml?searchType=items&pr={1}&pn={2}&pi={3}")]
@@ -201,7 +201,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemUpgradeURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.worldofwarcraft.com/shared/global/talents/{0}/images/{1}/{2}.jpg")]
@@ -210,7 +210,7 @@ namespace Rawr.Properties {
                 return ((string)(this["TalentIconURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.wowarmory.com/item-info.xml?i={0}")]
@@ -219,7 +219,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemInfoURI"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -231,7 +231,7 @@ namespace Rawr.Properties {
                 this["DownloadItemInfo"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -243,7 +243,7 @@ namespace Rawr.Properties {
                 this["ProxyRequiresAuthentication"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
@@ -255,7 +255,7 @@ namespace Rawr.Properties {
                 this["UseDefaultAuthenticationForProxy"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -267,7 +267,7 @@ namespace Rawr.Properties {
                 this["ProxyDomain"] = value;
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowhead.com/?item={1}&xml")]
@@ -276,7 +276,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemWowheadURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowarmory.com/search.xml?searchQuery={1}&searchType=items")]
@@ -285,7 +285,7 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemSearchURI"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://{0}.wowhead.com/?items&filter={1}")]
@@ -294,10 +294,10 @@ namespace Rawr.Properties {
                 return ((string)(this["ItemWowheadUpgradeURI"]));
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://www.wowarmory.com/wow-icons/_images/_talents31x31/{0}")]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://wotlkdb.com/static/images/wow/icons/medium/{0}")]
         public string ArmoryTalentIconURI {
             get {
                 return ((string)(this["ArmoryTalentIconURI"]));
@@ -306,7 +306,7 @@ namespace Rawr.Properties {
                 this["ArmoryTalentIconURI"] = value;
             }
         }
-        
+
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("http://www.wowhead.com/?quest={0}")]

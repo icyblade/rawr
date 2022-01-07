@@ -151,7 +151,7 @@ namespace Rawr.Hunter
             if ((Keyboard.Modifiers & ModifierKeys.Shift) != 0) Current--;
             else Current++;
         }
-        
+
     }
 
     public class Icons
@@ -173,7 +173,7 @@ namespace Rawr.Hunter
                 if (talentTree == "Cunning") { index = 3; } else if (talentTree == "Ferocity") { index = 1; } else if (talentTree == "Tenacity") { index = 2; }
                 uri = new Uri(string.Format("http://static.wowhead.com/images/wow/hunterpettalents/live/bg_{0}.jpg", index), UriKind.Absolute);
             } else {
-                uri = new Uri(string.Format("http://www.wowarmory.com/wow-icons/_images/_talents31x31/{1}{0}.jpg", talentName.ToLower(), on ? "" : "grey/"), UriKind.Absolute);
+                uri = new Uri(string.Format("https://wotlkdb.com/static/images/wow/icons/medium/{1}{0}.jpg", talentName.ToLower(), on ? "" : "grey/"), UriKind.Absolute);
             }
             return NewBitmapImage(uri);
         }
