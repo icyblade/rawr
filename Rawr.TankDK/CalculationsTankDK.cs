@@ -1005,7 +1005,7 @@ criteria to this <= 0 to ensure that you stay defense-soft capped.",
 					{
 						fCharacterShotCount += (fRotDuration / ct.MH.hastedSpeed);
 					}
-					if (ct.m_bDW || character.MainHand == null && character.OffHand != null && ct.OH.hastedSpeed > 0f)
+					if (character.OffHand != null && ct.OH.hastedSpeed > 0f)
 					{
 						fCharacterShotCount += (fRotDuration / ct.OH.hastedSpeed);
 					}
