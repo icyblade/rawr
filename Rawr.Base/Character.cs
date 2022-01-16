@@ -1269,6 +1269,22 @@ namespace Rawr //O O . .
             return GetItemAvailability(itemInstance.Id.ToString(), string.Format("{0}.{1}.{2}.{3}", itemInstance.Id, itemInstance.Gem1Id, itemInstance.Gem2Id, itemInstance.Gem3Id), itemInstance.GemmedId);
         }
 
+        public ItemAvailability GetItemAvailability(ComparisonCalculationBase comparisonCalculation)
+        {
+            if (comparisonCalculation.ItemInstance != null)
+            {
+                return GetItemAvailability(comparisonCalculation.ItemInstance);
+            }
+            else if (comparisonCalculation.Item != null)
+            {
+                return GetItemAvailability(comparisonCalculation.Item);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
         private ItemAvailability GetItemAvailability(string id, string gemId, string fullId)
         {
             string anyGem = id + ".*.*.*";
@@ -1348,6 +1364,22 @@ namespace Rawr //O O . .
                 }
             }
             OnAvailableItemsChanged();
+        }
+
+        public void ToggleItemAvailability(ComparisonCalculationBase comparisonCalculation, bool regemmingAllowed)
+        {
+            if (comparisonCalculation.ItemInstance != null)
+            {
+                ToggleItemAvailability(comparisonCalculation.ItemInstance, regemmingAllowed);
+            }
+            else if (comparisonCalculation.Item != null)
+            {
+                ToggleItemAvailability(comparisonCalculation.Item, regemmingAllowed);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
 
         public void ToggleAvailableItemEnchantRestriction(ItemInstance item, Enchant enchant)

@@ -2495,6 +2495,29 @@ Please remember that it's still a beta, though, so lots of things are likely to 
             dialog.Dispose();
         }
 
+        private void toolStripButtonToggleAll_Click(object sender, EventArgs e)
+        {
+            ComparisonGraph comparisonGraph1 = (ComparisonGraph)itemComparison1
+                .GetType()
+                .GetField("comparisonGraph1", BindingFlags.NonPublic | BindingFlags.Instance)
+                .GetValue(itemComparison1);
+
+            ItemAvailability? currentAvailability = null;
+
+            foreach (ComparisonCalculationBase i in comparisonGraph1.ItemCalculations)
+            {
+                ItemAvailability itemAvailability = Character.GetItemAvailability(i);
+                if (currentAvailability == null)
+                {
+                    currentAvailability = itemAvailability;
+                }
+                if (itemAvailability == currentAvailability)
+                {
+                    Character.ToggleItemAvailability(i, true);
+                }
+            }
+        }
+
         private void copyEnhSimConfigToClipboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Type formOptionsPanel = Calculations.CalculationOptionsPanel.GetType();
