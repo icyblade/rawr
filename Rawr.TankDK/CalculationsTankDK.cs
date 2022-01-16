@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Collections.Concurrent;
 #if RAWR3
 using System.Windows.Media;
 #else
@@ -330,7 +331,7 @@ criteria to this <= 0 to ensure that you stay defense-soft capped.",
 		}
 
         #region Static SpecialEffects
-        private static Dictionary<float, SpecialEffect[]> _SE_SpellDeflection = new Dictionary<float,SpecialEffect[]>();
+        private static ConcurrentDictionary<float, SpecialEffect[]> _SE_SpellDeflection = new ConcurrentDictionary<float,SpecialEffect[]>();
         private static readonly SpecialEffect _SE_T10_4P = new SpecialEffect(Trigger.Use, new Stats() { DamageTakenMultiplier = -0.12f }, 10f, 60f);
         private static readonly SpecialEffect _SE_FC1 = new SpecialEffect(Trigger.DamageDone, new Stats() { BonusStrengthMultiplier = .15f }, 15f, 0f, -2f, 1);
         private static readonly SpecialEffect _SE_FC2 = new SpecialEffect(Trigger.DamageDone, new Stats() { HealthRestoreFromMaxHealth = .03f }, 0, 0f, -2f, 1);
@@ -536,12 +537,12 @@ criteria to this <= 0 to ensure that you stay defense-soft capped.",
 			if (character.DeathKnightTalents.SpellDeflection > 0) {
                 float key = (float)Math.Round(stats.Parry, 5);
                 if (!_SE_SpellDeflection.ContainsKey(key)) {
-                    _SE_SpellDeflection.Add(key, new SpecialEffect[] {
+                    _SE_SpellDeflection[key] = new SpecialEffect[] {
                         null, // this array point will never get selected because the opening If statement prevents it
                         new SpecialEffect(Trigger.DamageSpellHit, new Stats() { SpellDamageTakenMultiplier = -0.15f * 1 }, 0f, 0f, stats.Parry),
                         new SpecialEffect(Trigger.DamageSpellHit, new Stats() { SpellDamageTakenMultiplier = -0.15f * 2 }, 0f, 0f, stats.Parry),
                         new SpecialEffect(Trigger.DamageSpellHit, new Stats() { SpellDamageTakenMultiplier = -0.15f * 3 }, 0f, 0f, stats.Parry),
-                    });
+                    };
                 }
                 stats.AddSpecialEffect(_SE_SpellDeflection[key][TDK.Char.DeathKnightTalents.SpellDeflection]);
 			}
