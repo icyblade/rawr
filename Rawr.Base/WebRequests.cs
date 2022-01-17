@@ -306,7 +306,7 @@ namespace Rawr
 		/// <returns>The full path to the downloaded icon.  Null is returned if no icon  could be downloaded</returns>
 		public string DownloadItemIcon(string iconName)
 		{
-			string filePath = Path.Combine(ItemImageCachePath, iconName + ".jpg");
+			string filePath = Path.Combine(ItemImageCachePath, iconName + ".png");
             DownloadFile(NetworkSettingsProvider.WoWItemIconURI + iconName + ".jpg",
 							filePath, CONTENT_JPG);
 			if (!File.Exists(filePath))
@@ -325,7 +325,7 @@ namespace Rawr
 		/// <returns>The full path to the downloaded icon.  Null is returned if no icon could be downloaded</returns>
 		public string DownloadTalentIcon(Character.CharacterClass charClass, string talentTree, string talentName)
 		{
-			string imageName = talentTree + "_" + talentName + ".jpg";
+			string imageName = talentTree + "_" + talentName + ".png";
             string fullPathToSave = Path.Combine(TalentImageCachePath, charClass.ToString().ToLower()+"\\"+imageName);
 
 			if (!String.IsNullOrEmpty(talentTree) && !String.IsNullOrEmpty(talentName))
@@ -394,7 +394,7 @@ namespace Rawr
 		/// <param name="iconPath">The name of the icon to download.  No extension, No Path.</param>
 		public void DownloadItemIconAsync(string iconName)
 		{
-			string localPath = Path.Combine(ItemImageCachePath, iconName + ".jpg");
+			string localPath = Path.Combine(ItemImageCachePath, iconName + ".png");
 			if (!File.Exists(localPath))
 			{
 				DownloadRequest dl = new DownloadRequest();

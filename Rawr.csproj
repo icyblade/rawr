@@ -381,7 +381,7 @@
     <Content Include="ItemSource.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="images\*.jpg">
+    <Content Include="images\*.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="RawrIcon.ico" />
