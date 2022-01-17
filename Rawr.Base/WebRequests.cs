@@ -10,7 +10,7 @@ using System.Drawing;
 
 /*TODO: Make user actions (not system actions trying to refresh itself) override last fatal error and try again.
  * and if worked, reset fatalerror.  Another option would be to add a status panel like outlook and
- * give the user the option to try to reestablish network connectivity that way 
+ * give the user the option to try to reestablish network connectivity that way
  * */
 namespace Rawr
 {
@@ -39,8 +39,8 @@ namespace Rawr
 		private string _proxyPassword;
         private string _proxyDomain;
         private int _proxyPort;
-        
-		
+
+
 		private static Exception _fatalError = null;
         private static Exception _error = null;
 		private Dictionary<CharacterRegion, string> _domains = new Dictionary<CharacterRegion,string>();
@@ -206,7 +206,7 @@ namespace Rawr
 			{
                 get { return Rawr.Properties.NetworkSettings.Default.ItemWowheadUpgradeURI; }
 			}
-            
+
             public string QuestWowheadURI
             {
                 get { return Rawr.Properties.NetworkSettings.Default.QuestWowheadURI; }
@@ -293,10 +293,10 @@ namespace Rawr
 		public string GetRandomDidYouKnow()
 		{
 			string html = DownloadText("http://rawr.codeplex.com/Wiki/View.aspx?title=DidYouKnow");
-            if (html == null || !html.Contains("-------<br />") || 
-                !(html.Contains("&nbsp;by&nbsp;<a id=\"wikiEditByLink\" href=\"http://www.codeplex.com/site/users/view/Astrylian\">Astrylian</a>") || 
+            if (html == null || !html.Contains("-------<br />") ||
+                !(html.Contains("&nbsp;by&nbsp;<a id=\"wikiEditByLink\" href=\"http://www.codeplex.com/site/users/view/Astrylian\">Astrylian</a>") ||
                   html.Contains("&nbsp;by&nbsp;<a id=\"wikiEditByLink\" href=\"http://www.codeplex.com/site/users/view/Kavan\">Kavan</a>") ||
-                  html.Contains("&nbsp;by&nbsp;<a id=\"wikiEditByLink\" href=\"http://www.codeplex.com/site/users/view/Levva\">Levva</a>"))) 
+                  html.Contains("&nbsp;by&nbsp;<a id=\"wikiEditByLink\" href=\"http://www.codeplex.com/site/users/view/Levva\">Levva</a>")))
                     return string.Empty;
 			html = html.Substring(html.IndexOf("-------<br />") + 13);
 			if (!html.Contains("<br />-------")) return string.Empty;
@@ -417,7 +417,7 @@ namespace Rawr
             return doc;
         }
 
-        public string DownloadQuestWowhead(string id) 
+        public string DownloadQuestWowhead(string id)
         {
             // Quest data is only available as HTML, no XML variant
             string doc = null;
@@ -455,7 +455,7 @@ namespace Rawr
 		/// <returns>The full path to the downloaded icon.  Null is returned if no icon  could be downloaded</returns>
 		public string DownloadItemIcon(string iconName)
 		{
-			string filePath = Path.Combine(ItemImageCachePath, iconName + ".jpg");
+			string filePath = Path.Combine(ItemImageCachePath, iconName + ".png");
             DownloadFile(NetworkSettingsProvider.WoWItemIconURI + iconName + ".jpg",
 							filePath, CONTENT_JPG);
 			if (!File.Exists(filePath))
@@ -464,7 +464,7 @@ namespace Rawr
 			}
 			return filePath;
 		}
-		
+
 		/// <summary>
 		/// Downloads the icon associated with the talent passed in
 		/// </summary>
@@ -578,7 +578,7 @@ namespace Rawr
 		/// <param name="iconPath">The name of the icon to download.  No extension, No Path.</param>
 		public void DownloadItemIconAsync(string iconName)
 		{
-			string localPath = Path.Combine(ItemImageCachePath, iconName + ".jpg");
+			string localPath = Path.Combine(ItemImageCachePath, iconName + ".png");
 			if (!File.Exists(localPath))
 			{
 				DownloadRequest dl = new DownloadRequest();
@@ -695,7 +695,7 @@ namespace Rawr
 							catch (Exception ex)
 							{
 								CheckExceptionForFatalError(ex);
-								//if on a client file download, there is an exception, 
+								//if on a client file download, there is an exception,
 								//it will create a 0 byte file. We don't want that empty file.
 								if (File.Exists(localPath))
 								{
@@ -714,7 +714,7 @@ namespace Rawr
 		}
 
 		/// <summary>
-		/// This is used to prevent multiple attempts at network traffic when its not working and 
+		/// This is used to prevent multiple attempts at network traffic when its not working and
 		/// continuing to issue requests could cause serious problems for the user.
 		/// </summary>
 		/// <param name="ex"></param>
@@ -732,7 +732,7 @@ namespace Rawr
 				_fatalError = ex;
 			}
             _error = ex;
-		}        
+		}
 
 		public string DownloadText(string URI)
 		{
