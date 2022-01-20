@@ -2145,7 +2145,7 @@ namespace Rawr
             {
                 Name = "Dodge Food",
                 Group = "Food",
-                Stats = { DodgeRating = 40, Stamina = 40 }
+                Stats = { DodgeRating = 40 }
             });
             #endregion
             #region Pet Food
