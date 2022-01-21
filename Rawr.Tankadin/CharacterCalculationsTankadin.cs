@@ -180,7 +180,7 @@ namespace Rawr.Tankadin
                 dictValues.Add("Chance to be Crit", (5f - CritAvoidance).ToString()
                     + string.Format("%*Uncrittable by bosses. {0} defense rating or {1} resilience over the crit cap.",
                     Math.Floor((5f - CritAvoidance) * -60f), Math.Floor((5f - CritAvoidance) * -39.423f)));
-            dictValues.Add("Chance to be Crush", $"{Math.Min(15, 102.4 - CrushAvoidance):0.00}%");
+            dictValues.Add("Chance to be Crush", $"{Math.Min(15, 100 - CrushAvoidance):0.00}%");
             dictValues.Add("Overall Points", OverallPoints.ToString());
             dictValues.Add("Mitigation Points", MitigationPoints.ToString());
             dictValues.Add("Survival Points", SurvivalPoints.ToString());
