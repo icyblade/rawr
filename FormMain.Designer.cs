@@ -1046,7 +1046,8 @@ namespace Rawr
             this.toolStripLabel1,
             this.toolStripDropDownButtonSlot,
             this.toolStripLabel2,
-            this.toolStripDropDownButtonSort});
+            this.toolStripDropDownButtonSort,
+            this.toolStripButtonToggleAll});
             this.toolStripItemComparison.Location = new System.Drawing.Point(3, 16);
             this.toolStripItemComparison.Name = "toolStripItemComparison";
             this.toolStripItemComparison.Size = new System.Drawing.Size(458, 25);
@@ -1492,8 +1493,7 @@ namespace Rawr
             this.toolStripDropDownButtonSort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButtonSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.overallToolStripMenuItem,
-            this.alphabeticalToolStripMenuItem,
-            this.toolStripButtonToggleAll});
+            this.alphabeticalToolStripMenuItem});
             this.toolStripDropDownButtonSort.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonSort.Image")));
             this.toolStripDropDownButtonSort.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonSort.Name = "toolStripDropDownButtonSort";
