@@ -45,12 +45,9 @@ namespace Rawr.Tankadin
 					"Complex Stats:Total Mitigation",
 					"Complex Stats:Chance to be Crit",
                     "Complex Stats:Chance to be Crush",
-                    @"Complex Stats:Overall Points*Overall Points are a sum of Mitigation and Survival Points.
-Overall is typically, but not always, the best way to rate gear.
-For specific encounters, closer attention to Mitigation and
-Survival Points individually may be important.",
-					@"Complex Stats:Mitigation Points*Effective health with correct avoidances",
-					@"Complex Stats:Survival Points*Effective health without avoidances, crits, crushes",
+                    @"Complex Stats:Overall Points*Weighted sum of Threat and Survival Points",
+					@"Complex Stats:Mitigation Points*Chance to be crit or crush, this value should always be 0",
+					@"Complex Stats:Survival Points*Effective health assuming all attacks are block",
                      "Threat:Overall",
                      "Threat:Holy Shield",
                      "Threat:Seal of Right",
@@ -168,6 +165,9 @@ Survival Points individually may be important.",
             float crush = Math.Min((targetLevel == 73 ? .15f : 0f) * attacks, attacks - miss - block - crit);
             float hit = attacks - miss - block - crit - crush;
 
+            calculatedStats.MitigationPoints = (crit + crush) / attacks;
+            calculatedStats.SurvivalPoints = stats.Health / reduction / Math.Max(1f - (calculatedStats.BlockValue / calcOpts.AverageHit / reduction), 0);
+
             float threatModifier = 1 + 0.01f * talents.OneHandSpec;
             switch (talents.ImprovedRighteousFury)
             {
@@ -194,8 +194,6 @@ Survival Points individually may be important.",
             calculatedStats.DamageTaken = (hit + crush + crit + block) / (attacks * calcOpts.AverageHit) * 100;
             calculatedStats.TotalMitigation = 100f - calculatedStats.DamageTaken;
 
-            calculatedStats.SurvivalPoints = stats.Health / reduction * calcOpts.SurvivalScale;
-            calculatedStats.MitigationPoints = stats.Health / calculatedStats.DamageTaken * 100;
             float ws = character.MainHand == null ? 0 : character.MainHand.Speed;
             float wd = character.MainHand == null ? 0 : ((character.MainHand.MinDamage + character.MainHand.MaxDamage) / 2f);
             calculatedStats.SoRTPS = ws == 0 ? 0 : ((0.85f * (2610.43f * ws / 100f) + 0.03f * wd + 6f + (0.102f * ws * spellDamage)) / ws * threatModifier);
@@ -205,7 +203,7 @@ Survival Points individually may be important.",
                 calculatedStats.HolyShieldTPS + calculatedStats.ConsecrateTPS + calculatedStats.MiscTPS;
             calculatedStats.ThreatPoints = calculatedStats.OverallTPS * calcOpts.ThreatScale;
 
-            calculatedStats.OverallPoints = calculatedStats.MitigationPoints + calculatedStats.SurvivalPoints + calculatedStats.ThreatPoints;
+            calculatedStats.OverallPoints = calculatedStats.SurvivalPoints + calculatedStats.ThreatPoints;
 
             return calculatedStats;
         }
