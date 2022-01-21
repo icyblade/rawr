@@ -346,6 +346,18 @@ namespace Rawr //O O . .
             }
         }
 
+        public ItemAvailability GetItemAvailability(ComparisonCalculationBase comparisonCalculation)
+        {
+            if (comparisonCalculation.Item != null)
+            {
+                return GetItemAvailability(comparisonCalculation.Item);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
+        }
+
         public void ToggleItemAvailability(Item item, bool regemmingAllowed)
         {
             string id = item.Id.ToString();
@@ -377,6 +389,18 @@ namespace Rawr //O O . .
                 }
             }
             OnAvailableItemsChanged();
+        }
+
+        public void ToggleItemAvailability(ComparisonCalculationBase comparisonCalculation, bool regemmingAllowed)
+        {
+            if (comparisonCalculation.Item != null)
+            {
+                ToggleItemAvailability(comparisonCalculation.Item, regemmingAllowed);
+            }
+            else
+            {
+                throw new NullReferenceException();
+            }
         }
 
         public void ToggleAvailableItemEnchantRestriction(Item item, Enchant enchant)

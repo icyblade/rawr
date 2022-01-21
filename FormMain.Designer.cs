@@ -150,6 +150,7 @@ namespace Rawr
             this.toolStripDropDownButtonSort = new System.Windows.Forms.ToolStripDropDownButton();
             this.overallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.alphabeticalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButtonToggleAll = new System.Windows.Forms.ToolStripButton();
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1491,7 +1492,8 @@ namespace Rawr
             this.toolStripDropDownButtonSort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.toolStripDropDownButtonSort.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.overallToolStripMenuItem,
-            this.alphabeticalToolStripMenuItem});
+            this.alphabeticalToolStripMenuItem,
+            this.toolStripButtonToggleAll});
             this.toolStripDropDownButtonSort.Image = ((System.Drawing.Image)(resources.GetObject("toolStripDropDownButtonSort.Image")));
             this.toolStripDropDownButtonSort.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripDropDownButtonSort.Name = "toolStripDropDownButtonSort";
@@ -1513,6 +1515,15 @@ namespace Rawr
             this.alphabeticalToolStripMenuItem.Tag = -2;
             this.alphabeticalToolStripMenuItem.Text = "Alphabetical";
             this.alphabeticalToolStripMenuItem.Click += new System.EventHandler(this.sortToolStripMenuItem_Click);
+            // 
+            // toolStripButtonToggleAll
+            // 
+            this.toolStripButtonToggleAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonToggleAll.Margin = new System.Windows.Forms.Padding(0, 1, 8, 2);
+            this.toolStripButtonToggleAll.Name = "toolStripButtonToggleAll";
+            this.toolStripButtonToggleAll.Size = new System.Drawing.Size(52, 17);
+            this.toolStripButtonToggleAll.Text = "Toggle All";
+            this.toolStripButtonToggleAll.Click += new System.EventHandler(this.toolStripButtonToggleAll_Click);
             // 
             // menuStripMain
             // 
@@ -1936,7 +1947,8 @@ namespace Rawr
 		private System.Windows.Forms.Label label25;
 		private System.Windows.Forms.ToolStripMenuItem loadPossibleUpgradesFromArmoryToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem alphabeticalToolStripMenuItem;
-		private System.Windows.Forms.ToolStripMenuItem currentGearEnchantsBuffsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButtonToggleAll;
+        private System.Windows.Forms.ToolStripMenuItem currentGearEnchantsBuffsToolStripMenuItem;
 		private System.Windows.Forms.ToolStripMenuItem directUpgradesMenuItem;
 		private BuffSelector buffSelector1;
 		private System.Windows.Forms.ToolStripMenuItem allBuffsToolStripMenuItem;

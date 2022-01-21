@@ -1,19 +1,18 @@
+using Rawr.Forms;
+using Rawr.Forms.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
-using System.Xml;
-
-using Rawr.Forms;
-using Rawr.Forms.Utilities;
-using System.IO;
+using static Rawr.Character;
 
 namespace Rawr
 {
-	public partial class FormMain : Form, IFormItemSelectionProvider
+    public partial class FormMain : Form, IFormItemSelectionProvider
 	{
         private string _storedCharacterPath;
         private bool _storedUnsavedChanged;
@@ -944,6 +943,29 @@ namespace Rawr
 			}
 			itemComparison1.Sort = sort;
 			this.Cursor = Cursors.Default;
+		}
+
+		private void toolStripButtonToggleAll_Click(object sender, EventArgs e)
+		{
+			ComparisonGraph comparisonGraph1 = (ComparisonGraph)itemComparison1
+				.GetType()
+				.GetField("comparisonGraph1", BindingFlags.NonPublic | BindingFlags.Instance)
+				.GetValue(itemComparison1);
+
+			ItemAvailability? currentAvailability = null;
+
+			foreach (ComparisonCalculationBase i in comparisonGraph1.ItemCalculations)
+			{
+				ItemAvailability itemAvailability = Character.GetItemAvailability(i);
+				if (currentAvailability == null)
+				{
+					currentAvailability = itemAvailability;
+				}
+				if (itemAvailability == currentAvailability)
+				{
+					Character.ToggleItemAvailability(i, true);
+				}
+			}
 		}
 
 		private void loadPossibleUpgradesFromArmoryToolStripMenuItem_Click(object sender, EventArgs e)
