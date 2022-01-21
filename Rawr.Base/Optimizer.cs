@@ -866,23 +866,23 @@ namespace Rawr
             metaGemItems = metaGemItemList.ToArray();
             gemItems = FilterList(gemItemList);
 
-            List<Item> headItemList = new List<Item>();
-            List<Item> neckItemList = new List<Item>();
-            List<Item> shouldersItemList = new List<Item>();
-            List<Item> backItemList = new List<Item>();
-            List<Item> chestItemList = new List<Item>();
-            List<Item> wristItemList = new List<Item>();
-            List<Item> handsItemList = new List<Item>();
-            List<Item> waistItemList = new List<Item>();
-            List<Item> legsItemList = new List<Item>();
-            List<Item> feetItemList = new List<Item>();
-            List<Item> fingerItemList = new List<Item>();
-            List<Item> trinketItemList = new List<Item>();
-            List<Item> mainHandItemList = new List<Item>();
-            List<Item> offHandItemList = new List<Item>();
-            List<Item> rangedItemList = new List<Item>();
-            List<Item> projectileItemList = new List<Item>();
-            List<Item> projectileBagItemList = new List<Item>();
+            Dictionary<string, Item> headItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> neckItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> shouldersItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> backItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> chestItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> wristItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> handsItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> waistItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> legsItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> feetItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> fingerItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> trinketItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> mainHandItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> offHandItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> rangedItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> projectileItemList = new Dictionary<string, Item>();
+            Dictionary<string, Item> projectileBagItemList = new Dictionary<string, Item>();
 
             List<Enchant> backEnchantList = new List<Enchant>();
             foreach (Enchant enchant in Enchant.FindEnchants(Item.ItemSlot.Back, availableItems, model))
@@ -980,23 +980,23 @@ namespace Rawr
                 if (item != null)
                 {
                     possibleGemmedItems = GetPossibleGemmedItemsForItem(item, gid, gemItems, metaGemItems);
-                    if (item.FitsInSlot(Character.CharacterSlot.Head)) foreach (Item gemmedItem in possibleGemmedItems) if (headItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) headItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Neck)) foreach (Item gemmedItem in possibleGemmedItems) if (neckItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) neckItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Shoulders)) foreach (Item gemmedItem in possibleGemmedItems) if (shouldersItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) shouldersItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Back)) foreach (Item gemmedItem in possibleGemmedItems) if (backItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) backItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Chest)) foreach (Item gemmedItem in possibleGemmedItems) if (chestItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) chestItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Wrist)) foreach (Item gemmedItem in possibleGemmedItems) if (wristItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) wristItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Hands)) foreach (Item gemmedItem in possibleGemmedItems) if (handsItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) handsItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Waist)) foreach (Item gemmedItem in possibleGemmedItems) if (waistItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) waistItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Legs)) foreach (Item gemmedItem in possibleGemmedItems) if (legsItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) legsItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Feet)) foreach (Item gemmedItem in possibleGemmedItems) if (feetItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) feetItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Finger1)) foreach (Item gemmedItem in possibleGemmedItems) if (fingerItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) fingerItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Trinket1)) foreach (Item gemmedItem in possibleGemmedItems) if (trinketItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) trinketItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.MainHand)) foreach (Item gemmedItem in possibleGemmedItems) if (mainHandItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) mainHandItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.OffHand)) foreach (Item gemmedItem in possibleGemmedItems) if (offHandItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) offHandItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Ranged)) foreach (Item gemmedItem in possibleGemmedItems) if (rangedItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) rangedItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.Projectile)) foreach (Item gemmedItem in possibleGemmedItems) if (projectileItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) projectileItemList.Add(gemmedItem);
-                    if (item.FitsInSlot(Character.CharacterSlot.ProjectileBag)) foreach (Item gemmedItem in possibleGemmedItems) if (projectileBagItemList.FindIndex(x => x.GemmedId == gemmedItem.GemmedId) < 0) projectileBagItemList.Add(gemmedItem);
+                    if (item.FitsInSlot(Character.CharacterSlot.Head)) foreach (Item gemmedItem in possibleGemmedItems) headItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Neck)) foreach (Item gemmedItem in possibleGemmedItems) neckItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Shoulders)) foreach (Item gemmedItem in possibleGemmedItems) shouldersItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Back)) foreach (Item gemmedItem in possibleGemmedItems) backItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Chest)) foreach (Item gemmedItem in possibleGemmedItems) chestItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Wrist)) foreach (Item gemmedItem in possibleGemmedItems) wristItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Hands)) foreach (Item gemmedItem in possibleGemmedItems) handsItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Waist)) foreach (Item gemmedItem in possibleGemmedItems) waistItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Legs)) foreach (Item gemmedItem in possibleGemmedItems) legsItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Feet)) foreach (Item gemmedItem in possibleGemmedItems) feetItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Finger1)) foreach (Item gemmedItem in possibleGemmedItems) fingerItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Trinket1)) foreach (Item gemmedItem in possibleGemmedItems) trinketItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.MainHand)) foreach (Item gemmedItem in possibleGemmedItems) mainHandItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.OffHand)) foreach (Item gemmedItem in possibleGemmedItems) offHandItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Ranged)) foreach (Item gemmedItem in possibleGemmedItems) rangedItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.Projectile)) foreach (Item gemmedItem in possibleGemmedItems) projectileItemList[gemmedItem.GemmedId] = gemmedItem;
+                    if (item.FitsInSlot(Character.CharacterSlot.ProjectileBag)) foreach (Item gemmedItem in possibleGemmedItems) projectileBagItemList[gemmedItem.GemmedId] = gemmedItem;
 
                     List<Enchant> validEnchants = new List<Enchant>();
                     foreach (string restriction in gemmedIdMap[gid])
@@ -1171,24 +1171,6 @@ namespace Rawr
             slotEnchants[(int)Character.CharacterSlot.Ranged] = rangedEnchants = Enchant.FindAllEnchants(Item.ItemSlot.Ranged).ToArray();
             slotEnchants[(int)Character.CharacterSlot.Wrist] = wristEnchants = Enchant.FindAllEnchants(Item.ItemSlot.Wrist).ToArray();
 
-            if (headItemList.Count == 0) headItemList.Add(null);
-            if (neckItemList.Count == 0) neckItemList.Add(null);
-            if (shouldersItemList.Count == 0) shouldersItemList.Add(null);
-            if (backItemList.Count == 0) backItemList.Add(null);
-            if (chestItemList.Count == 0) chestItemList.Add(null);
-            if (wristItemList.Count == 0) wristItemList.Add(null);
-            if (handsItemList.Count == 0) handsItemList.Add(null);
-            if (waistItemList.Count == 0) waistItemList.Add(null);
-            if (legsItemList.Count == 0) legsItemList.Add(null);
-            if (feetItemList.Count == 0) feetItemList.Add(null);
-            if (rangedItemList.Count == 0) rangedItemList.Add(null);
-            if (projectileItemList.Count == 0) projectileItemList.Add(null);
-            if (projectileBagItemList.Count == 0) projectileBagItemList.Add(null);
-            fingerItemList.Add(null);
-            trinketItemList.Add(null);
-            mainHandItemList.Add(null);
-            offHandItemList.Add(null);
-
             slotItems[(int)Character.CharacterSlot.Head] = headItems = FilterList(headItemList);
             slotItems[(int)Character.CharacterSlot.Neck] = neckItems = FilterList(neckItemList);
             slotItems[(int)Character.CharacterSlot.Shoulders] = shouldersItems = FilterList(shouldersItemList);
@@ -1199,8 +1181,8 @@ namespace Rawr
             slotItems[(int)Character.CharacterSlot.Waist] = waistItems = FilterList(waistItemList);
             slotItems[(int)Character.CharacterSlot.Legs] = legsItems = FilterList(legsItemList);
             slotItems[(int)Character.CharacterSlot.Feet] = feetItems = FilterList(feetItemList);
-            slotItems[(int)Character.CharacterSlot.Finger1] = slotItems[(int)Character.CharacterSlot.Finger2] = fingerItems = fingerItemList.ToArray(); //When one ring/trinket is completely better than another
-            slotItems[(int)Character.CharacterSlot.Trinket1] = slotItems[(int)Character.CharacterSlot.Trinket2] = trinketItems = trinketItemList.ToArray(); //you may still want to use both, so don't filter
+            slotItems[(int)Character.CharacterSlot.Finger1] = slotItems[(int)Character.CharacterSlot.Finger2] = fingerItems = new List<Item>(fingerItemList.Values).ToArray(); //When one ring/trinket is completely better than another
+            slotItems[(int)Character.CharacterSlot.Trinket1] = slotItems[(int)Character.CharacterSlot.Trinket2] = trinketItems = new List<Item>(trinketItemList.Values).ToArray(); //you may still want to use both, so don't filter
             slotItems[(int)Character.CharacterSlot.MainHand] = mainHandItems = FilterList(mainHandItemList);
             slotItems[(int)Character.CharacterSlot.OffHand] = offHandItems = FilterList(offHandItemList);
             slotItems[(int)Character.CharacterSlot.Ranged] = rangedItems = FilterList(rangedItemList);
@@ -1865,7 +1847,18 @@ namespace Rawr
             return GeneratorBuildCharacter(
                 delegate(int slot)
                 {
-                    return (lockedSlot == (Character.CharacterSlot)slot) ? lockedItems[rand.Next(lockedItems.Length)] : slotItems[slot][rand.Next(slotItems[slot].Length)];
+                    if (lockedSlot == (Character.CharacterSlot)slot)
+                    {
+                        return lockedItems[rand.Next(lockedItems.Length)];
+                    }
+                    else if (slotItems[slot].Length > 0)
+                    {
+                        return slotItems[slot][rand.Next(slotItems[slot].Length)];
+                    }
+                    else
+                    {
+                        return null; 
+                    }
                 },
                 delegate(int slot, Item item)
                 {
@@ -2232,16 +2225,33 @@ namespace Rawr
             return character;
         }
 
-		private Character BuildMutantCharacter(Character parent)
-		{
-			int targetMutations = 2;
-			while (targetMutations < 32 && rand.NextDouble() < 0.75d) targetMutations++;
-			double mutationChance = (double)targetMutations / 32d;
+        private Character BuildMutantCharacter(Character parent)
+        {
+            int targetMutations = 2;
+            while (targetMutations < 32 && rand.NextDouble() < 0.75d) targetMutations++;
+            double mutationChance = (double)targetMutations / 32d;
 
             return GeneratorBuildCharacter(
-                delegate(int slot)
+                delegate (int slot)
                 {
-                    return rand.NextDouble() < mutationChance ? ((lockedSlot == (Character.CharacterSlot)slot) ? lockedItems[rand.Next(lockedItems.Length)] : slotItems[slot][rand.Next(slotItems[slot].Length)]) : parent[(Character.CharacterSlot)slot];
+                    if (rand.NextDouble() < mutationChance)
+                    {
+                        if (lockedSlot == (Character.CharacterSlot)slot)
+                        {
+                            return lockedItems[rand.Next(lockedItems.Length)];
+                        }
+                        else if (slotItems[slot].Length > 0) {
+                            return slotItems[slot][rand.Next(slotItems[slot].Length)];
+                        }
+                        else
+                        {
+                            return null;
+                        }
+                    }
+                    else
+                    {
+                        return parent[(Character.CharacterSlot)slot];
+                    }
                 },
                 delegate(int slot, Item item)
                 {
@@ -2540,7 +2550,12 @@ namespace Rawr
 			return filteredList.ToArray();
 		}
 
-		private class StatsColors
+        private Item[] FilterList(Dictionary<string, Item> unfilteredList)
+        {
+            return FilterList(new List<Item>(unfilteredList.Values));
+        }
+
+        private class StatsColors
 		{
 			public Item GemmedItem;
 			public Stats Stats;
